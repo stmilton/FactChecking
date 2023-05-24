@@ -63,10 +63,12 @@ class BertFineTune():
         micro_f1 = sm.f1_score(y_true=labels, y_pred=pred, average='micro')
         return {"precision": precision, "recall": recall, "macro_f1": macro_f1, "micro_f1": micro_f1}
     
-    def train(self):
+    def set_device(self):
         # 使用GPU
         device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
         self.model.to(device)
+    
+    def train(self):
         self.trainer.train()
 
     def label_predict(self,data_part='test'):

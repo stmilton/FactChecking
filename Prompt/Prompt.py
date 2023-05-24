@@ -30,7 +30,7 @@ class Prompt():
                     temp_evidence.append(evidence[0])
                 else:
                     temp_evidence.append(evidence[2])
-                evidence_str = ",".join(temp_evidence)
+                evidence_str = "[SEP]".join(temp_evidence)
             input_example = InputExample(text_a = evidence_str, 
                                          text_b = data['claim'], 
                                          label=label_mapping[data['label']]) 
@@ -74,10 +74,12 @@ class Prompt():
                 alllabels.extend(labels.cpu().tolist())
                 allpreds.extend(torch.argmax(logits, dim=-1).cpu().tolist())
             return alllabels, allpreds
-
-    def train(self):
+        
+    def set_device(self):
         if self.training_args.use_cuda:
             self.model = self.model.cuda()
+
+    def train(self):
         # 對偏差和 LayerNorm 參數設定不衰减是一個好經驗
         no_decay = ['bias', 'LayerNorm.weight']
 

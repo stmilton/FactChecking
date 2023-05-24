@@ -1,5 +1,5 @@
-from Prompt import Prompt
-from openprompt.prompts import PtuningTemplate,ManualVerbalizer
+from Prompt.Prompt import Prompt
+from openprompt.prompts import PtuningTemplate, ManualVerbalizer
 from openprompt import PromptForClassification
 
 class P_tuning_v1(Prompt):

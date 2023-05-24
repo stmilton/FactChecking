@@ -1,6 +1,7 @@
 class Hyperparameters():
     def __init__(self):
-        self.checkpoint = "bert-base-uncased"
+        # self.checkpoint = "bert-base-uncased"
+        # self.checkpoint = "t5-base"
         self.train_size = None
         self.val_size = None
         self.test_size = None
